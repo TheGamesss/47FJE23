@@ -1,0 +1,36 @@
+Let's walk through the steps to enable Flatpak support on your Chromebook without using Linux. Although the tutorial I provided earlier was for Ubuntu, I'll adapt the instructions for ChromeOS:
+- Check System Requirements:
+    - Ensure you have an x86-based Chromebook running ChromeOS 80 or later.
+    - Verify this by opening the Chrome browser and typing chrome://version in the address bar. If needed, follow Google's instructions to upgrade your OS.
+- Enable Linux Support:
+    - Go to your system settings and click on the Linux icon to enable Linux apps on your Chromebook.
+    - Open the Terminal and check if you have the correct Linux version by running:
+___________________
+cat /etc/os-release
+___________________
+If the version is not 10 (buster) or above, run the update script:
+___________________________________________________________
+sudo bash /opt/google/cros-containers/bin/upgrade_container
+___________________________________________________________
+This script may take some time depending on your Chromebook's speed and internet connection.
+    - Restart your Linux container by either right-clicking the Terminal icon and selecting Shut down Linux (Beta) or simply restarting your Chromebook.
+- Enable Flatpak:
+    - Flatpak is a universal packaging format for Linux. To enable it, follow these steps:
+        - Open the Terminal and run:
+____________________________
+sudo apt-get update
+sudo apt-get install flatpak
+____________________________
+
+        - Add the Flathub repository:
+_______________________________________________________________________________________
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+_______________________________________________________________________________________
+        - Restart your system or log out and log back in.
+- Install Firefox:
+    - Once Flatpak is set up, install Firefox from the Terminal:
+_____________________________________________
+flatpak install flathub org.mozilla.firefox
+_____________________________________________
+Now you're all set! You can enjoy browsing with Firefox on your Chromebook without needing Linux. 🦊🌐
+For more details, you can refer to the official Mozilla Support article on running Firefox on ChromeOS.
